@@ -1,22 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Award, Heart, Camera, Users, MapPin, Mail, Phone } from 'lucide-react';
-import ImageSlider from '../components/ImageSlider';
-import ContactForm from '../components/ContactForm';
+import React from "react";
+import { motion } from "framer-motion";
+import { Award, Heart, Camera, Users, MapPin, Mail, Phone } from "lucide-react";
+import ImageSlider from "../components/ImageSlider";
+import ContactForm from "../components/ContactForm";
 
 const About = () => {
   const handleContactClick = (type: string) => {
     switch (type) {
-      case 'email':
-        window.location.href = 'mailto:desaicyrus@gmail.com';
+      case "email":
+        window.location.href = "mailto:desaicyrus@gmail.com";
         break;
-      case 'phone':
-        window.location.href = 'tel:+919916378416';
+      case "phone":
+        window.location.href = "tel:+919916378416";
         break;
-      case 'whatsapp':
-        const message = "Hi Cyrus, I found your website and would like to know more about your photography services.";
-        const whatsappUrl = `https://wa.me/919916378416?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
+      case "whatsapp":
+        const message =
+          "Hi Cyrus, I found your website and would like to know more about your photography services.";
+        const whatsappUrl = `https://wa.me/919916378416?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
         break;
     }
   };
@@ -26,76 +29,86 @@ const About = () => {
       id: 1,
       src: "https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Wedding preparation",
-      caption: "Capturing candid moments during wedding preparations"
+      caption: "Capturing candid moments during wedding preparations",
     },
     {
       id: 2,
       src: "https://images.pexels.com/photos/935985/pexels-photo-935985.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Portrait session setup",
-      caption: "Setting up for a professional portrait session"
+      caption: "Setting up for a professional portrait session",
     },
     {
       id: 3,
       src: "https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Event coverage",
-      caption: "Documenting special moments at corporate events"
+      caption: "Documenting special moments at corporate events",
     },
     {
       id: 4,
       src: "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Couple shoot",
-      caption: "Creating romantic memories during couple sessions"
+      caption: "Creating romantic memories during couple sessions",
     },
     {
       id: 5,
       src: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Commercial shoot",
-      caption: "Professional branding photography in action"
-    }
+      caption: "Professional branding photography in action",
+    },
   ];
 
   const values = [
     {
       icon: Heart,
       title: "Passion",
-      description: "We pour our heart into every shot, ensuring each image tells a meaningful and emotional story that resonates for years to come."
+      description:
+        "We pour our heart into every shot, ensuring each image tells a meaningful and emotional story that resonates for years to come.",
     },
     {
       icon: Camera,
       title: "Excellence",
-      description: "We strive for perfection in every frame, using the latest techniques and professional equipment to deliver exceptional results."
+      description:
+        "We strive for perfection in every frame, using the latest techniques and professional equipment to deliver exceptional results.",
     },
     {
       icon: Users,
       title: "Connection",
-      description: "We build genuine relationships with our clients to capture their most authentic moments and true personalities."
+      description:
+        "We build genuine relationships with our clients to capture their most authentic moments and true personalities.",
     },
     {
       icon: Award,
       title: "Quality",
-      description: "We deliver exceptional results that exceed expectations and stand the test of time with timeless elegance."
-    }
+      description:
+        "We deliver exceptional results that exceed expectations and stand the test of time with timeless elegance.",
+    },
   ];
 
   const teamMembers = [
     {
       name: "Cyrus Desai",
       role: "Lead Photographer & Founder",
-      image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      description: "With over 8 years of experience, Cyrus brings artistic vision and technical expertise to every project, creating timeless memories."
+      image:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      description:
+        "With over 8 years of experience, Cyrus brings artistic vision and technical expertise to every project, creating timeless memories.",
     },
     {
       name: "Priya Sharma",
       role: "Associate Photographer",
-      image: "https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      description: "Specializing in portrait and lifestyle photography, Priya captures authentic emotions and genuine connections with artistic flair."
+      image:
+        "https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      description:
+        "Specializing in portrait and lifestyle photography, Priya captures authentic emotions and genuine connections with artistic flair.",
     },
     {
       name: "Arjun Patel",
       role: "Event Specialist",
-      image: "https://images.pexels.com/photos/935985/pexels-photo-935985.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      description: "Expert in event and wedding photography, Arjun ensures no precious moment goes uncaptured with his keen eye for detail."
-    }
+      image:
+        "https://images.pexels.com/photos/935985/pexels-photo-935985.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      description:
+        "Expert in event and wedding photography, Arjun ensures no precious moment goes uncaptured with his keen eye for detail.",
+    },
   ];
 
   return (
@@ -110,7 +123,7 @@ const About = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-neutral-950/60 to-neutral-950/80"></div>
         </div>
-        
+
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
@@ -126,11 +139,11 @@ const About = () => {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="text-lg md:text-xl text-stone-300 max-w-2xl mx-auto leading-relaxed font-light"
           >
-            Crafting visual narratives that capture the essence of life's most precious moments
+            Crafting visual narratives that capture the essence of life's most
+            precious moments
           </motion.p>
         </div>
       </section>
-
       {/* Story Section */}
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -142,17 +155,22 @@ const About = () => {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <ImageSlider images={sliderImages} autoplay={true} interval={4000} />
+              <ImageSlider
+                images={sliderImages}
+                autoplay={true}
+                interval={4000}
+              />
               <div className="text-center">
                 <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">
                   Behind the Scenes
                 </p>
                 <p className="text-stone-400 font-light mt-2">
-                  A glimpse into our creative process and passion for photography
+                  A glimpse into our creative process and passion for
+                  photography
                 </p>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -161,29 +179,33 @@ const About = () => {
               className="space-y-8"
             >
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight">
-                The Vision Behind <span className="italic font-medium">Our Craft</span>
+                The Vision Behind{" "}
+                <span className="italic font-medium">Our Craft</span>
               </h2>
               <div className="space-y-6 text-stone-400 text-lg leading-relaxed font-light">
                 <p>
-                  Founded in 2016, Cyrus Desai Photography was born from a passion for capturing life's most 
-                  extraordinary moments. We believe that every photograph should tell a story, evoke emotion, 
-                  and preserve memories that will be treasured for generations.
+                  Founded in 2016, Cyrus Desai Photography was born from a
+                  passion for capturing life's most extraordinary moments. We
+                  believe that every photograph should tell a story, evoke
+                  emotion, and preserve memories that will be treasured for
+                  generations.
                 </p>
                 <p>
-                  Our approach combines technical excellence with artistic vision, creating images that are 
-                  not just beautiful, but meaningful. We work closely with our clients to understand their 
-                  unique stories and bring them to life through our lens.
+                  Our approach combines technical excellence with artistic
+                  vision, creating images that are not just beautiful, but
+                  meaningful. We work closely with our clients to understand
+                  their unique stories and bring them to life through our lens.
                 </p>
                 <p>
-                  Based in Bangalore, India, we've had the privilege of working with clients across the country, 
-                  from intimate family portraits to grand wedding celebrations and corporate events.
+                  Based in Bangalore, India, we've had the privilege of working
+                  with clients across the country, from intimate family
+                  portraits to grand wedding celebrations and corporate events.
                 </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-
       {/* Values Section */}
       <section className="py-32 bg-stone-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -198,7 +220,8 @@ const About = () => {
               Our <span className="italic font-medium">Values</span>
             </h2>
             <p className="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed font-light">
-              The principles that guide every aspect of our work and relationships
+              The principles that guide every aspect of our work and
+              relationships
             </p>
           </motion.div>
 
@@ -208,76 +231,28 @@ const About = () => {
                 key={value.title}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
                 viewport={{ once: true }}
                 className="text-center space-y-6"
               >
                 <div className="flex justify-center">
                   <value.icon className="w-12 h-12 text-stone-300" />
                 </div>
-                <h3 className="text-xl font-serif font-medium">{value.title}</h3>
-                <p className="text-stone-400 leading-relaxed font-light">{value.description}</p>
+                <h3 className="text-xl font-serif font-medium">
+                  {value.title}
+                </h3>
+                <p className="text-stone-400 leading-relaxed font-light">
+                  {value.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Process Section */}
-      <section className="py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 tracking-tight">
-              Our Creative <span className="italic font-medium">Process</span>
-            </h2>
-            <p className="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed font-light">
-              From initial consultation to final delivery, we ensure every step exceeds your expectations
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {[
-              {
-                step: "01",
-                title: "Consultation",
-                description: "We start with a detailed consultation to understand your vision, preferences, and requirements for the perfect shoot."
-              },
-              {
-                step: "02",
-                title: "Capture",
-                description: "On the day of the shoot, we work seamlessly to capture authentic moments and emotions with artistic precision."
-              },
-              {
-                step: "03",
-                title: "Delivery",
-                description: "We carefully edit and deliver your photos through a beautiful online gallery within 2-3 weeks of the shoot."
-              }
-            ].map((process, index) => (
-              <motion.div
-                key={process.step}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="text-center space-y-6"
-              >
-                <div className="text-6xl font-serif font-light text-stone-300 mb-6">
-                  {process.step}
-                </div>
-                <h3 className="text-2xl font-serif font-medium">{process.title}</h3>
-                <p className="text-stone-400 leading-relaxed font-light">{process.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Team Section */}
       <section className="py-32 bg-stone-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -292,7 +267,8 @@ const About = () => {
               Meet Our <span className="italic font-medium">Team</span>
             </h2>
             <p className="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed font-light">
-              Talented professionals dedicated to capturing your most precious moments
+              Talented professionals dedicated to capturing your most precious
+              moments
             </p>
           </motion.div>
 
@@ -302,7 +278,11 @@ const About = () => {
                 key={member.name}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
                 viewport={{ once: true }}
                 className="text-center space-y-6"
               >
@@ -310,20 +290,58 @@ const About = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer"
                   />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl font-serif font-medium">{member.name}</h3>
+                  <h3 className="text-xl font-serif font-medium">
+                    {member.name}
+                  </h3>
                   <p className="text-stone-400 font-light">{member.role}</p>
-                  <p className="text-stone-500 text-sm leading-relaxed font-light">{member.description}</p>
+                  <p className="text-stone-500 text-sm leading-relaxed font-light">
+                    {member.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
+      {/* Call to Action */}
+      {/* <section className="py-32 bg-stone-950">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-serif font-light mb-8 tracking-tight"
+          >
+            Let's Create Something{" "}
+            <span className="italic font-medium">Beautiful</span> Together
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-lg text-stone-400 mb-12 leading-relaxed font-light"
+          >
+            Ready to tell your story? We'd love to hear from you and discuss how
+            we can bring your vision to life.
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            onClick={() => handleContactClick("whatsapp")}
+            className="px-8 py-4 text-sm font-medium tracking-wide text-neutral-950 bg-stone-100 hover:bg-stone-200 transition-all duration-500"
+          >
+            Get In Touch
+          </motion.button>
+        </div>
+      </section> */}
       {/* Location & Contact Section */}
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -338,7 +356,8 @@ const About = () => {
               Visit Our <span className="italic font-medium">Studio</span>
             </h2>
             <p className="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed font-light">
-              Located in the heart of Bangalore, our studio is equipped with state-of-the-art equipment
+              Located in the heart of Bangalore, our studio is equipped with
+              state-of-the-art equipment
             </p>
           </motion.div>
 
@@ -350,14 +369,18 @@ const About = () => {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h3 className="text-2xl font-serif font-medium mb-8">Get In Touch</h3>
+              <h3 className="text-2xl font-serif font-medium mb-8">
+                Get In Touch
+              </h3>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <Phone className="w-6 h-6 text-stone-400" />
                   <div>
-                    <p className="text-sm text-stone-500 uppercase tracking-widest font-medium mb-1">Phone</p>
-                    <button 
-                      onClick={() => handleContactClick('phone')}
+                    <p className="text-sm text-stone-500 uppercase tracking-widest font-medium mb-1">
+                      Phone
+                    </p>
+                    <button
+                      onClick={() => handleContactClick("phone")}
                       className="text-stone-200 hover:text-stone-100 transition-colors duration-300 font-light"
                     >
                       +91 9916378416
@@ -367,9 +390,11 @@ const About = () => {
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-stone-400" />
                   <div>
-                    <p className="text-sm text-stone-500 uppercase tracking-widest font-medium mb-1">Email</p>
-                    <button 
-                      onClick={() => handleContactClick('email')}
+                    <p className="text-sm text-stone-500 uppercase tracking-widest font-medium mb-1">
+                      Email
+                    </p>
+                    <button
+                      onClick={() => handleContactClick("email")}
                       className="text-stone-200 hover:text-stone-100 transition-colors duration-300 font-light"
                     >
                       desaicyrus@gmail.com
@@ -379,13 +404,17 @@ const About = () => {
                 <div className="flex items-center space-x-4">
                   <MapPin className="w-6 h-6 text-stone-400" />
                   <div>
-                    <p className="text-sm text-stone-500 uppercase tracking-widest font-medium mb-1">Location</p>
-                    <p className="text-stone-200 font-light">Bangalore, Karnataka, India</p>
+                    <p className="text-sm text-stone-500 uppercase tracking-widest font-medium mb-1">
+                      Location
+                    </p>
+                    <p className="text-stone-200 font-light">
+                      Bangalore, Karnataka, India
+                    </p>
                   </div>
                 </div>
               </div>
-              <button 
-                onClick={() => handleContactClick('whatsapp')}
+              <button
+                onClick={() => handleContactClick("whatsapp")}
                 className="w-full px-8 py-4 text-sm font-medium tracking-wide text-neutral-950 bg-stone-100 hover:bg-stone-200 transition-all duration-500"
               >
                 Contact via WhatsApp
@@ -414,41 +443,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* Call to Action */}
-      <section className="py-32 bg-stone-950">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-serif font-light mb-8 tracking-tight"
-          >
-            Let's Create Something <span className="italic font-medium">Beautiful</span> Together
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-lg text-stone-400 mb-12 leading-relaxed font-light"
-          >
-            Ready to tell your story? We'd love to hear from you and discuss how we can bring your vision to life.
-          </motion.p>
-          <motion.button
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            onClick={() => handleContactClick('whatsapp')}
-            className="px-8 py-4 text-sm font-medium tracking-wide text-neutral-950 bg-stone-100 hover:bg-stone-200 transition-all duration-500"
-          >
-            Get In Touch
-          </motion.button>
-        </div>
-      </section>
-
       <ContactForm />
     </div>
   );

@@ -1,46 +1,56 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-import emailjs from 'emailjs-com';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "emailjs-com";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    serviceType: '',
-    eventDate: '',
-    guestCount: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    serviceType: "",
+    eventDate: "",
+    guestCount: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const serviceOptions = [
-    'Wedding Photography',
-    'Pre-Wedding Shoot',
-    'Event Photography',
-    'Portrait Session',
-    'Baby Shower',
-    'Couple Shoot',
-    'Housewarming',
-    'Branding Shoot',
-    'Graduation',
-    'Commercial Photography',
-    'Other'
+    "Pre wedding",
+    "Wedding Photography",
+    "Maternity Photography",
+    "Newborn photography",
+    "Kids photography",
+    "Event photography",
+    "Food photography",
+    "Real estate photography",
+    "Commercial photography",
+    "Fashion photography",
+    "Sports photography",
+    "Portrait Photography",
+    "Street Photography",
+    "Wildlife Photography",
+    "Other",
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       // EmailJS configuration - replace with your actual service details
@@ -52,25 +62,25 @@ const ContactForm = () => {
         event_date: formData.eventDate,
         guest_count: formData.guestCount,
         message: formData.message,
-        to_email: 'desaicyrus@gmail.com'
+        to_email: "desaicyrus@gmail.com",
       };
 
       // For demo purposes, we'll simulate the email sending
       // Replace this with actual EmailJS configuration:
       // await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_PUBLIC_KEY');
-      
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      setSubmitStatus('success');
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      setSubmitStatus("success");
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        serviceType: '',
-        eventDate: '',
-        guestCount: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        serviceType: "",
+        eventDate: "",
+        guestCount: "",
+        message: "",
       });
 
       // Also send WhatsApp message as backup
@@ -81,13 +91,14 @@ Service: ${formData.serviceType}
 Event Date: ${formData.eventDate}
 Guest Count: ${formData.guestCount}
 Message: ${formData.message}`;
-      
-      const whatsappUrl = `https://wa.me/919916378416?text=${encodeURIComponent(whatsappMessage)}`;
-      window.open(whatsappUrl, '_blank');
 
+      const whatsappUrl = `https://wa.me/919916378416?text=${encodeURIComponent(
+        whatsappMessage
+      )}`;
+      window.open(whatsappUrl, "_blank");
     } catch (error) {
-      console.error('Error sending email:', error);
-      setSubmitStatus('error');
+      console.error("Error sending email:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -104,10 +115,12 @@ Message: ${formData.message}`;
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 tracking-tight text-stone-100">
-            Let's Create Something <span className="italic font-medium">Beautiful</span>
+            Let's Create Something{" "}
+            <span className="italic font-medium">Beautiful</span>
           </h2>
           <p className="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed font-light">
-            Ready to capture your special moments? Fill out the form below and we'll get back to you within 24 hours.
+            Ready to capture your special moments? Fill out the form below and
+            we'll get back to you within 24 hours.
           </p>
         </motion.div>
 
@@ -121,7 +134,10 @@ Message: ${formData.message}`;
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-stone-300 mb-3">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-stone-300 mb-3"
+              >
                 Full Name *
               </label>
               <input
@@ -137,7 +153,10 @@ Message: ${formData.message}`;
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-stone-300 mb-3">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-stone-300 mb-3"
+              >
                 Email Address *
               </label>
               <input
@@ -153,7 +172,10 @@ Message: ${formData.message}`;
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-stone-300 mb-3">
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-stone-300 mb-3"
+              >
                 Phone Number *
               </label>
               <input
@@ -164,12 +186,15 @@ Message: ${formData.message}`;
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-neutral-950 border border-stone-800 text-stone-100 placeholder-stone-500 focus:border-stone-100 focus:outline-none transition-colors duration-300"
-                placeholder="+91 9876543210"
+                placeholder="+91 123456789"
               />
             </div>
 
             <div>
-              <label htmlFor="serviceType" className="block text-sm font-medium text-stone-300 mb-3">
+              <label
+                htmlFor="serviceType"
+                className="block text-sm font-medium text-stone-300 mb-3"
+              >
                 Service Type *
               </label>
               <select
@@ -190,7 +215,10 @@ Message: ${formData.message}`;
             </div>
 
             <div>
-              <label htmlFor="eventDate" className="block text-sm font-medium text-stone-300 mb-3">
+              <label
+                htmlFor="eventDate"
+                className="block text-sm font-medium text-stone-300 mb-3"
+              >
                 Event Date
               </label>
               <input
@@ -204,7 +232,10 @@ Message: ${formData.message}`;
             </div>
 
             <div>
-              <label htmlFor="guestCount" className="block text-sm font-medium text-stone-300 mb-3">
+              <label
+                htmlFor="guestCount"
+                className="block text-sm font-medium text-stone-300 mb-3"
+              >
                 Guest Count (if applicable)
               </label>
               <input
@@ -220,7 +251,10 @@ Message: ${formData.message}`;
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-stone-300 mb-3">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-stone-300 mb-3"
+            >
               Message
             </label>
             <textarea
@@ -258,7 +292,7 @@ Message: ${formData.message}`;
 
           {/* Status Messages */}
           <AnimatePresence>
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -266,11 +300,14 @@ Message: ${formData.message}`;
                 className="flex items-center justify-center space-x-3 text-green-400 bg-green-400/10 border border-green-400/20 px-6 py-4"
               >
                 <CheckCircle className="w-5 h-5" />
-                <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
+                <span>
+                  Thank you! Your message has been sent successfully. We'll get
+                  back to you soon.
+                </span>
               </motion.div>
             )}
 
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -278,7 +315,10 @@ Message: ${formData.message}`;
                 className="flex items-center justify-center space-x-3 text-red-400 bg-red-400/10 border border-red-400/20 px-6 py-4"
               >
                 <AlertCircle className="w-5 h-5" />
-                <span>Sorry, there was an error sending your message. Please try again or contact us directly.</span>
+                <span>
+                  Sorry, there was an error sending your message. Please try
+                  again or contact us directly.
+                </span>
               </motion.div>
             )}
           </AnimatePresence>
