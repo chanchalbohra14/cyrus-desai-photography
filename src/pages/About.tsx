@@ -57,60 +57,61 @@ const About = () => {
     },
   ];
 
-  const values = [
-    {
-      icon: Heart,
-      title: "Passion",
-      description:
-        "We pour our heart into every shot, ensuring each image tells a meaningful and emotional story that resonates for years to come.",
-    },
-    {
-      icon: Camera,
-      title: "Excellence",
-      description:
-        "We strive for perfection in every frame, using the latest techniques and professional equipment to deliver exceptional results.",
-    },
-    {
-      icon: Users,
-      title: "Connection",
-      description:
-        "We build genuine relationships with our clients to capture their most authentic moments and true personalities.",
-    },
-    {
-      icon: Award,
-      title: "Quality",
-      description:
-        "We deliver exceptional results that exceed expectations and stand the test of time with timeless elegance.",
-    },
-  ];
-
   const teamMembers = [
     {
-      name: "Cyrus Desai",
-      role: "Lead Photographer & Founder",
-      image:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      description:
-        "With over 8 years of experience, Cyrus brings artistic vision and technical expertise to every project, creating timeless memories.",
-    },
-    {
-      name: "Priya Sharma",
-      role: "Associate Photographer",
-      image:
-        "https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      description:
-        "Specializing in portrait and lifestyle photography, Priya captures authentic emotions and genuine connections with artistic flair.",
-    },
-    {
-      name: "Arjun Patel",
-      role: "Event Specialist",
+      name: "Cyrus",
+      role: "Founder & Lead Photographer",
       image:
         "https://images.pexels.com/photos/935985/pexels-photo-935985.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
       description:
-        "Expert in event and wedding photography, Arjun ensures no precious moment goes uncaptured with his keen eye for detail.",
+        "Visionary behind the brand with a passion for storytelling through timeless photography.",
+    },
+    {
+      name: "Vishwanath",
+      role: "Studio Manager & Photographer",
+      image:
+        "https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+
+      description:
+        "Manages day-to-day operations while capturing striking moments with precision.",
+    },
+    {
+      name: "Nagraj",
+      role: "Photographer & Videographer",
+      image:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+
+      description:
+        "Expert in blending cinematic videography with creative photography techniques.",
+    },
+    {
+      name: "Sai",
+      role: "Photographer & Videographer",
+      image:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+
+      description:
+        "Passionate about capturing raw emotions and dynamic visual stories.",
+    },
+    {
+      name: "Arvind",
+      role: "Photographer & Videographer",
+      image:
+        "https://images.pexels.com/photos/935985/pexels-photo-935985.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+
+      description:
+        "Combines technical skill with artistic vision to craft memorable visuals.",
+    },
+    {
+      name: "Khadar",
+      role: "Photographer & Videographer",
+      image:
+        "https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+
+      description:
+        "Focused on detail and creativity, ensuring every frame tells a story.",
     },
   ];
-
   return (
     <div className="bg-neutral-950 text-stone-100">
       {/* Hero Section */}
@@ -148,9 +149,10 @@ const About = () => {
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Image with fade-up */}
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
               viewport={{ once: true }}
               className="space-y-8"
@@ -158,14 +160,15 @@ const About = () => {
               <img
                 src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
                 alt="Behind the Scenes"
-                className="w-full h-full  object-cover"
+                className="w-full h-full object-cover"
               />
             </motion.div>
 
+            {/* Text with fade-up (slight delay for stagger effect) */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
@@ -200,28 +203,43 @@ const About = () => {
 
       {/* Slider Section */}
       <section className="py-16 px-4">
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="space-y-8 mt-20"
-        >
-          <ImageSlider images={sliderImages} autoplay={true} interval={4000} />
-          <div className="text-center">
+        <div className="space-y-8 mt-20">
+          {/* Slider */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <ImageSlider
+              images={sliderImages}
+              autoplay={true}
+              interval={4000}
+            />
+          </motion.div>
+
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
             <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">
               Behind the Scenes
             </p>
             <p className="text-stone-400 font-light mt-2">
               A glimpse into our creative process and passion for photography
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Team Section */}
       <section className="py-32 bg-stone-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -237,7 +255,9 @@ const About = () => {
               moments
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -249,17 +269,20 @@ const About = () => {
                   ease: "easeOut",
                 }}
                 viewport={{ once: true }}
-                className="text-center space-y-6"
+                className="flex flex-col items-center text-center bg-stone-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative overflow-hidden bg-stone-900 mx-auto w-64 h-64">
+                {/* Image */}
+                <div className="relative overflow-hidden w-56 h-56 mb-6">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer"
+                    className="w-full h-full object-cover  hover:grayscale-0 hover:scale-105 transition-all duration-500 cursor-pointer"
                   />
                 </div>
+
+                {/* Info */}
                 <div className="space-y-2">
-                  <h3 className="text-xl font-serif font-medium">
+                  <h3 className="text-xl font-serif font-medium text-stone-100">
                     {member.name}
                   </h3>
                   <p className="text-stone-400 font-light">{member.role}</p>
@@ -272,44 +295,11 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* Call to Action */}
-      {/* <section className="py-32 bg-stone-950">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-serif font-light mb-8 tracking-tight"
-          >
-            Let's Create Something{" "}
-            <span className="italic font-medium">Beautiful</span> Together
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-lg text-stone-400 mb-12 leading-relaxed font-light"
-          >
-            Ready to tell your story? We'd love to hear from you and discuss how
-            we can bring your vision to life.
-          </motion.p>
-          <motion.button
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            onClick={() => handleContactClick("whatsapp")}
-            className="px-8 py-4 text-sm font-medium tracking-wide text-neutral-950 bg-stone-100 hover:bg-stone-200 transition-all duration-500"
-          >
-            Get In Touch
-          </motion.button>
-        </div>
-      </section> */}
+
       {/* Location & Contact Section */}
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -326,10 +316,12 @@ const About = () => {
             </p>
           </motion.div>
 
+          {/* Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Get In Touch */}
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
               viewport={{ once: true }}
               className="space-y-8"
@@ -352,6 +344,7 @@ const About = () => {
                     </button>
                   </div>
                 </div>
+
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-stone-400" />
                   <div>
@@ -366,6 +359,7 @@ const About = () => {
                     </button>
                   </div>
                 </div>
+
                 <div className="flex items-center space-x-4">
                   <MapPin className="w-6 h-6 text-stone-400" />
                   <div>
@@ -378,6 +372,7 @@ const About = () => {
                   </div>
                 </div>
               </div>
+
               <button
                 onClick={() => handleContactClick("whatsapp")}
                 className="w-full px-8 py-4 text-sm font-medium tracking-wide text-neutral-950 bg-stone-100 hover:bg-stone-200 transition-all duration-500"
@@ -386,24 +381,14 @@ const About = () => {
               </button>
             </motion.div>
 
+            {/* Map */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
               viewport={{ once: true }}
               className="relative overflow-hidden bg-stone-900"
             >
-              {/* <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d77.49085452148437!3d12.953945614117647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1703123456789!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Cyrus Desai Photography Location"
-                className="grayscale"
-              ></iframe> */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30773064.056845006!2d61.04182762828652!3d19.69228278198373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb711076b2f36c7%3A0x1d6644f4d82b9900!2sCyrus%20Desai%20Photography!5e0!3m2!1sen!2sin!4v1756097793152!5m2!1sen!2sin"
                 width="100%"
@@ -419,6 +404,7 @@ const About = () => {
           </div>
         </div>
       </section>
+
       <ContactForm />
     </div>
   );
