@@ -9,8 +9,16 @@ import {
   MapPin,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavClick = (href: string) => {
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleEmailClick = () => {
     window.location.href = "mailto:desaicyrus@gmail.com";
   };
@@ -41,10 +49,15 @@ const Footer = () => {
             className="space-y-6"
           >
             <div className="flex items-center space-x-3">
-              <Camera className="w-7 h-7 text-stone-300" />
+              {/* <Camera className="w-7 h-7 text-stone-300" />
               <span className="text-xl font-serif font-medium text-stone-100">
                 Cyrus Desai Photography
-              </span>
+              </span> */}
+              <img
+                src="/logo.PNG"
+                alt="Logo"
+                className="h-20 w-auto object-contain filter invert"
+              />
             </div>
             <p className="text-stone-400 leading-relaxed font-light">
               Capturing life's most precious moments with cinematic artistry and
@@ -64,20 +77,28 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="/"
-                  className="text-stone-400 hover:text-stone-100 transition-colors duration-300 font-light"
+                <button
+                  onClick={() => handleNavClick("/")}
+                  className="text-stone-400 hover:text-stone-100 transition-colors duration-300 font-light text-left w-full"
                 >
                   Home
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="/about"
-                  className="text-stone-400 hover:text-stone-100 transition-colors duration-300 font-light"
+                <button
+                  onClick={() => handleNavClick("/about")}
+                  className="text-stone-400 hover:text-stone-100 transition-colors duration-300 font-light text-left w-full"
                 >
                   About
-                </a>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNavClick("/services")}
+                  className="text-stone-400 hover:text-stone-100 transition-colors duration-300 font-light text-left w-full"
+                >
+                  Services
+                </button>
               </li>
               <li>
                 <a

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "emailjs-com";
+import { useLocation } from "react-router-dom"; // Add this import
 
 const ContactForm = () => {
+  const location = useLocation(); // Add this line
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -103,6 +106,17 @@ Message: ${formData.message}`;
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const service = params.get("service");
+    if (service) {
+      setFormData((prev) => ({
+        ...prev,
+        serviceType: service,
+      }));
+    }
+  }, [location.search]);
 
   return (
     <section id="contact" className="py-32 bg-stone-950">

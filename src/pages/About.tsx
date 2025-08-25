@@ -41,13 +41,13 @@ const About = () => {
       id: 3,
       src: "https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Event coverage",
-      caption: "Documenting special moments at corporate events",
+      caption: "Creating romantic memories during couple sessions",
     },
     {
       id: 4,
       src: "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
       alt: "Behind the scenes - Couple shoot",
-      caption: "Creating romantic memories during couple sessions",
+      caption: "Creating memories during new achievements",
     },
     {
       id: 5,
@@ -155,20 +155,11 @@ const About = () => {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <ImageSlider
-                images={sliderImages}
-                autoplay={true}
-                interval={4000}
+              <img
+                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                alt="Behind the Scenes"
+                className="w-full h-full  object-cover"
               />
-              <div className="text-center">
-                <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">
-                  Behind the Scenes
-                </p>
-                <p className="text-stone-400 font-light mt-2">
-                  A glimpse into our creative process and passion for
-                  photography
-                </p>
-              </div>
             </motion.div>
 
             <motion.div
@@ -206,53 +197,28 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* Values Section */}
-      <section className="py-32 bg-stone-950">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 tracking-tight">
-              Our <span className="italic font-medium">Values</span>
-            </h2>
-            <p className="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed font-light">
-              The principles that guide every aspect of our work and
-              relationships
-            </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.1,
-                  ease: "easeOut",
-                }}
-                viewport={{ once: true }}
-                className="text-center space-y-6"
-              >
-                <div className="flex justify-center">
-                  <value.icon className="w-12 h-12 text-stone-300" />
-                </div>
-                <h3 className="text-xl font-serif font-medium">
-                  {value.title}
-                </h3>
-                <p className="text-stone-400 leading-relaxed font-light">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+      {/* Slider Section */}
+      <section className="py-16 px-4">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="space-y-8 mt-20"
+        >
+          <ImageSlider images={sliderImages} autoplay={true} interval={4000} />
+          <div className="text-center">
+            <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">
+              Behind the Scenes
+            </p>
+            <p className="text-stone-400 font-light mt-2">
+              A glimpse into our creative process and passion for photography
+            </p>
           </div>
-        </div>
+        </motion.div>
       </section>
+
       {/* Team Section */}
       <section className="py-32 bg-stone-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -271,7 +237,6 @@ const About = () => {
               moments
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {teamMembers.map((member, index) => (
               <motion.div
@@ -428,7 +393,7 @@ const About = () => {
               viewport={{ once: true }}
               className="relative overflow-hidden bg-stone-900"
             >
-              <iframe
+              {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d77.49085452148437!3d12.953945614117647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1703123456789!5m2!1sen!2sin"
                 width="100%"
                 height="400"
@@ -438,6 +403,17 @@ const About = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Cyrus Desai Photography Location"
                 className="grayscale"
+              ></iframe> */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30773064.056845006!2d61.04182762828652!3d19.69228278198373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb711076b2f36c7%3A0x1d6644f4d82b9900!2sCyrus%20Desai%20Photography!5e0!3m2!1sen!2sin!4v1756097793152!5m2!1sen!2sin"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                title="Cyrus Desai Photography Location"
+                className="grayscale"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </motion.div>
           </div>

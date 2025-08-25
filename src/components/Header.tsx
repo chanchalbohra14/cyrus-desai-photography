@@ -3,6 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Camera } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Add this function above your Header component
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,6 +70,7 @@ const Header = () => {
                     ? "text-stone-100"
                     : "text-stone-300 hover:text-stone-100"
                 }`}
+                onClick={scrollToTop} // Add this line
               >
                 {item.name}
                 <span
@@ -120,7 +126,10 @@ const Header = () => {
                       ? "text-stone-100"
                       : "text-stone-300 hover:text-stone-100"
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    scrollToTop(); // Add this line
+                    setIsMenuOpen(false);
+                  }}
                 >
                   {item.name}
                 </Link>

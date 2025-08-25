@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
   Users,
@@ -250,36 +250,407 @@ const services = [
   },
 ];
 
-// Helper to generate 30 images per service (replace with your own images if needed)
+const serviceImages: Record<string, string[]> = {
+  weddings: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${1779487 + i}/pexels-photo-${
+          1779487 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?wedding,bride,groom&sig=${i}`
+    ),
+  ],
+  "pre-wedding": [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${1024960 + i}/pexels-photo-${
+          1024960 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?prewedding,couple,love&sig=${i}`
+    ),
+  ],
+  events: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${3183197 + i}/pexels-photo-${
+          3183197 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?event,party,celebration&sig=${i}`
+    ),
+  ],
+  portraits: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${774909 + i}/pexels-photo-${
+          774909 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?portrait,people&sig=${i}`
+    ),
+  ],
+  "baby-shower": [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${1308881 + i}/pexels-photo-${
+          1308881 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?baby-shower,celebration&sig=${i}`
+    ),
+  ],
+  "couple-shoots": [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${1545743 + i}/pexels-photo-${
+          1545743 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?couple,romance&sig=${i}`
+    ),
+  ],
+  housewarming: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${935985 + i}/pexels-photo-${
+          935985 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?housewarming,home&sig=${i}`
+    ),
+  ],
+  branding: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${774909 + i}/pexels-photo-${
+          774909 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?branding,business&sig=${i}`
+    ),
+  ],
+  graduation: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${1779487 + i}/pexels-photo-${
+          1779487 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?graduation,cap,gown&sig=${i}`
+    ),
+  ],
+  commercial: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${935985 + i}/pexels-photo-${
+          935985 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?commercial,advertising&sig=${i}`
+    ),
+  ],
+  maternity: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${935985 + i}/pexels-photo-${
+          935985 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?maternity,pregnancy&sig=${i}`
+    ),
+  ],
+  newborn: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${3933274 + i}/pexels-photo-${
+          3933274 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?newborn,baby&sig=${i}`
+    ),
+  ],
+  kids: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${3662665 + i}/pexels-photo-${
+          3662665 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?kids,children&sig=${i}`
+    ),
+  ],
+  food: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${461382 + i}/pexels-photo-${
+          461382 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?food,restaurant&sig=${i}`
+    ),
+  ],
+  "real-estate": [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${106399 + i}/pexels-photo-${
+          106399 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://source.unsplash.com/800x600/?real-estate,property&sig=${i}`
+    ),
+  ],
+  fashion: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${1488463 + i}/pexels-photo-${
+          1488463 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?fashion,model&sig=${i}`
+    ),
+  ],
+  sports: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${399187 + i}/pexels-photo-${
+          399187 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?sports,athlete&sig=${i}`
+    ),
+  ],
+  street: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${167964 + i}/pexels-photo-${
+          167964 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?street,urban&sig=${i}`
+    ),
+  ],
+  wildlife: [
+    ...Array.from(
+      { length: 15 },
+      (_, i) =>
+        `https://images.pexels.com/photos/${674010 + i}/pexels-photo-${
+          674010 + i
+        }.jpeg?auto=compress&cs=tinysrgb&w=800&h=600`
+    ),
+    ...Array.from(
+      { length: 15 },
+      (_, i) => `https://source.unsplash.com/800x600/?wildlife,animals&sig=${i}`
+    ),
+  ],
+};
+
 const getServiceImages = (serviceId: string) =>
-  Array.from(
-    { length: 30 },
-    (_, i) => `https://source.unsplash.com/800x600/?${serviceId}&sig=${i}`
+  serviceImages[serviceId] || serviceImages["weddings"];
+
+const ImageWithFade = ({ src, alt, ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div style={{ position: "relative", width: "100%", height: "400px" }}>
+      {/* Blurred placeholder */}
+      <div
+        style={{
+          background: "#222",
+          filter: "blur(20px)",
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          transition: "opacity 0.3s",
+          opacity: loaded ? 0 : 1,
+        }}
+      />
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        style={{
+          width: "100%",
+          height: "400px",
+          objectFit: "cover",
+          borderRadius: "12px",
+          boxShadow: "0 0 20px #000",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.5s",
+          position: "relative",
+          zIndex: 1,
+        }}
+        {...props}
+      />
+    </div>
   );
+};
+
+const ImageSliderModal = ({
+  images,
+  onClose,
+}: {
+  images: string[];
+  onClose: () => void;
+}) => {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const variants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+  };
+
+  const paginate = (dir: number) => {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + images.length) % images.length);
+  };
+
+  // Swipe support
+  const handleDragEnd = (event: any, info: any) => {
+    if (info.offset.x < -100) paginate(1);
+    else if (info.offset.x > 100) paginate(-1);
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50">
+      <button
+        className="absolute top-8 right-8 text-white text-3xl font-bold"
+        onClick={onClose}
+      >
+        &times;
+      </button>
+      <div className="flex items-center justify-center w-full max-w-3xl px-8 relative">
+        <button
+          onClick={() => paginate(-1)}
+          className="absolute left-0 top-1/2 -translate-y-1/2 text-white text-4xl px-4 py-2 z-10"
+          aria-label="Previous"
+        >
+          &#8592;
+        </button>
+        <AnimatePresence custom={direction} initial={false}>
+          <motion.div
+            key={images[current]}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+              scale: { duration: 0.3 },
+              rotate: { duration: 0.3 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            onDragEnd={handleDragEnd}
+            className="w-full h-[400px] mx-8"
+            style={{ userSelect: "none" }}
+          >
+            <ImageWithFade
+              src={images[current]}
+              alt={`Gallery ${current + 1}`}
+            />
+          </motion.div>
+        </AnimatePresence>
+        <button
+          onClick={() => paginate(1)}
+          className="absolute right-0 top-1/2 -translate-y-1/2 text-white text-4xl px-4 py-2 z-10"
+          aria-label="Next"
+        >
+          &#8594;
+        </button>
+      </div>
+      <div className="mt-4 text-white text-lg">
+        {current + 1} / {images.length}
+      </div>
+    </div>
+  );
+};
 
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
-  const handleImageClick = (serviceId: string) => {
-    setSelectedService(serviceId);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedService(null);
-  };
-
   const handleBookService = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleGetQuote = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleExploreMore = () => {
-    document
-      .getElementById("services-grid")
-      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -340,6 +711,7 @@ const ServicesPage = () => {
                     src={service.image}
                     alt={service.title}
                     className="w-full h-96 object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+                    onClick={() => setSelectedService(service.id)} // <-- Add this line
                   />
                 </div>
 
@@ -413,24 +785,10 @@ const ServicesPage = () => {
 
       {/* Image Gallery Modal */}
       {selectedService && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50">
-          <button
-            className="absolute top-8 right-8 text-white text-3xl font-bold"
-            onClick={() => setSelectedService(null)}
-          >
-            &times;
-          </button>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-8 max-h-[80vh] overflow-y-auto">
-            {getServiceImages(selectedService).map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`Gallery ${idx + 1}`}
-                className="w-full h-40 object-cover rounded-lg"
-              />
-            ))}
-          </div>
-        </div>
+        <ImageSliderModal
+          images={getServiceImages(selectedService)}
+          onClose={() => setSelectedService(null)}
+        />
       )}
 
       <ContactForm />

@@ -42,6 +42,9 @@ const Services = () => {
     },
   ];
 
+  const handleViewFullPortfolio = () => {
+    window.location.href = "/services";
+  };
   return (
     <section className="py-32 bg-stone-950">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -109,6 +112,20 @@ const Services = () => {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-20"
+        >
+          <button
+            onClick={handleViewFullPortfolio}
+            className="px-8 py-4 text-sm font-medium tracking-wide text-stone-100 border border-stone-100 hover:bg-stone-100 hover:text-neutral-950 transition-all duration-500"
+          >
+            View All Services
+          </button>
+        </motion.div>
       </div>
     </section>
   );
