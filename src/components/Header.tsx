@@ -31,7 +31,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-500 ${
+      className={`fixed w-full z-50 transition-all duration-500  ${
         isScrolled
           ? "bg-neutral-950/95 backdrop-blur-md border-b border-stone-800/30"
           : "bg-transparent"
@@ -44,10 +44,11 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <img
-              src="/logo.PNG" // use a light/white version for contrast
+              src="/logo.PNG"
               alt="Logo"
-              className="h-20 w-auto object-contain" // scale naturally, no blur
+              className="h-20 w-auto object-contain filter invert"
             />
+
             {/* <span className="text-xl font-serif font-medium text-stone-100 group-hover:text-stone-300 transition-colors duration-300">
               Cyrus Desai Photography
             </span> */}
