@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageSliderProps {
   images: Array<{
@@ -13,10 +13,10 @@ interface ImageSliderProps {
   interval?: number;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({ 
-  images, 
-  autoplay = true, 
-  interval = 5000 
+const ImageSlider: React.FC<ImageSliderProps> = ({
+  images,
+  autoplay = true,
+  interval = 5000,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -25,7 +25,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     if (!autoplay || isHovered) return;
 
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, interval);
@@ -47,11 +47,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
   const handleTouchStart = (e: React.TouchEvent) => {
     const touchStartX = e.touches[0].clientX;
-    
+
     const handleTouchEnd = (endEvent: TouchEvent) => {
       const touchEndX = endEvent.changedTouches[0].clientX;
       const diff = touchStartX - touchEndX;
-      
+
       if (Math.abs(diff) > 50) {
         if (diff > 0) {
           goToNext();
@@ -59,15 +59,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           goToPrevious();
         }
       }
-      
-      document.removeEventListener('touchend', handleTouchEnd);
+
+      document.removeEventListener("touchend", handleTouchEnd);
     };
-    
-    document.addEventListener('touchend', handleTouchEnd);
+
+    document.addEventListener("touchend", handleTouchEnd);
   };
 
   return (
-    <div 
+    <div
       className="relative w-full h-96 lg:h-[500px] overflow-hidden bg-stone-900"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -88,7 +88,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 to-transparent" />
-          
+
           {images[currentIndex].caption && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -96,7 +96,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               transition={{ duration: 0.6, delay: 0.3 }}
               className="absolute bottom-8 left-8 text-stone-100"
             >
-              <p className="text-sm font-light">{images[currentIndex].caption}</p>
+              <p className="text-sm font-light">
+                {images[currentIndex].caption}
+              </p>
             </motion.div>
           )}
         </motion.div>
@@ -129,9 +131,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             whileHover={{ scale: 1.2 }}
             onClick={() => goToSlide(index)}
             className={`w-2 h-2 transition-all duration-300 ${
-              index === currentIndex 
-                ? 'bg-stone-100 w-8' 
-                : 'bg-stone-100/50 hover:bg-stone-100/70'
+              index === currentIndex
+                ? "bg-stone-100 w-8"
+                : "bg-stone-100/50 hover:bg-stone-100/70"
             }`}
           />
         ))}

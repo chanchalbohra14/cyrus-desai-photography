@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Camera } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Add this function above your Header component
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+// custom hook: scrolls to top after route change
+function useScrollToTopOnRouteChange() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // slight delay ensures new page renders before scroll
+    const timeout = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 50);
+
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+
+  useScrollToTopOnRouteChange(); // always run scroll-to-top after navigation
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +46,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-500  ${
+      className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-neutral-950/95 backdrop-blur-md border-b border-stone-800/30"
           : "bg-transparent"
@@ -45,18 +55,12 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <img
               src="/logo.PNG"
               alt="Logo"
               className="h-20 w-auto object-contain filter invert"
             />
-
-            {/* <span className="text-xl font-serif font-medium text-stone-100 group-hover:text-stone-300 transition-colors duration-300">
-              Cyrus Desai Photography
-            </span> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -70,7 +74,6 @@ const Header = () => {
                     ? "text-stone-100"
                     : "text-stone-300 hover:text-stone-100"
                 }`}
-                onClick={scrollToTop} // Add this line
               >
                 {item.name}
                 <span
@@ -126,10 +129,7 @@ const Header = () => {
                       ? "text-stone-100"
                       : "text-stone-300 hover:text-stone-100"
                   }`}
-                  onClick={() => {
-                    scrollToTop(); // Add this line
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>

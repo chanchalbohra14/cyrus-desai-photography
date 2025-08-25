@@ -210,6 +210,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
+            className="cursor-pointer"
           >
             <ImageSlider
               images={sliderImages}
@@ -272,7 +273,7 @@ const About = () => {
                 className="flex flex-col items-center text-center bg-stone-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Image */}
-                <div className="relative overflow-hidden w-56 h-56 mb-6">
+                <div className="relative overflow-hidden w-full h-80 mb-6">
                   <img
                     src={member.image}
                     alt={member.name}
